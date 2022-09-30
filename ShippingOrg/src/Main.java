@@ -6,6 +6,7 @@ public class Main {
         // Creating container object, loading the ship, displaying level of capacity.
         Container container = new Container("DK", 2.5f, 25, 8, 50);
         container.loadingCargo(33);
+        container.loadingCargo(7);
         System.out.println(container.utilityLevelOfCapacity());
 
         System.out.println("\n-----Information regarding tanker ship: ");
@@ -19,6 +20,7 @@ public class Main {
         // Creating container object, loading the ship, displaying level of capacity.
         RoRo roRo = new RoRo("SWE", 1.2f, 40, 12, 300);
         roRo.loadingCargo(3, 3);
+        roRo.loadingCargo(3,0);
         System.out.println(roRo.utilityLevelOfCapacity());
     }
 }

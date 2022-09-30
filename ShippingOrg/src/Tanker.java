@@ -1,8 +1,12 @@
 public class Tanker extends Vessel{
 
     Compartment[] compartments;
-    //int compartmentAmount;
 
+    // Tanker constructor - tankers must have between 1 and 10 compartmens, and therefore i've implemented two checks.
+    // If compartments are set to more than 10 compartmentAmount = 10
+    // If compartments are set to 0 or less compartmentAmount = 10
+    // Thereafter the specified amount of compartments is used to run through a loop x amount of times
+    // creating new compartment objects.
     public Tanker(String flagNation, float draft, int length, int width, int compartmentAmount) {
         super(flagNation, draft, length, width);
         if(compartmentAmount>10){
@@ -18,7 +22,9 @@ public class Tanker extends Vessel{
         }
     }
 
-
+    // utilityLevelOfCapacity found using a for each loop, running through the array of compartments created above.
+    // The loop checks if the compartment isFull() which is a boolean that returns true if the compartments fill
+    // is more than 0.
     @Override
     public Double utilityLevelOfCapacity() {
         int counter = 0;
@@ -28,6 +34,8 @@ public class Tanker extends Vessel{
         return (double) counter/compartments.length;
     }
 
+    // loadingCargo() - implemented checks to make sure compartments aren't "overfilled" and that compartments already
+    // containing a fluid aren't filled yet again (potentially with a new fluid).
     public void loadingCargo(int fill, int tankToFill){
         if(compartments[tankToFill].getFill()+fill >compartments[tankToFill].getCAPACITY()){
             System.out.println("Fill denied - fill amount exceeds capacity");
